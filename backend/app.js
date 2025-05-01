@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:4000", //Frontend URL
+    origin: process.env.FRONTEND_PROD_URL || "http://localhost:4000",
     credentials: true,
   })
 );
