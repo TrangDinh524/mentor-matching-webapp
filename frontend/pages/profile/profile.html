@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <script src="/components/header/header.js"></script>
+
+    <div class="profile-wrapper">
+      <!-- Left-side content -->
+      <div class="profile-left-content">
+        <div class="profile-avatar">
+          <img
+            src="/assets/images/avatar.jpg"
+            alt="Profile Avatar"
+            id="profile-avatar"
+          />
+        </div>
+        <h1 class="profile-name" id="display-name"></h1>
+        <div class="profile-username" id="display-username"></div>
+        <div class="role-badge-2" id="role-badge"></div>
+        <button class="edit-profile-button" id="edit-profile-btn">
+          Edit profile
+        </button>
+      </div>
+
+      <!-- Right-side content -->
+      <div class="profile-right-content">
+        <form id="profileForm">
+          <div class="profile-section">
+            <h2 class="section-title">Role</h2>
+            <select name="role" id="role" required disabled>
+              <option value="">Select Role</option>
+              <option value="mentor">Mentor</option>
+              <option value="mentee">Mentee</option>
+            </select>
+          </div>
+          <div class="profile-section">
+            <h2 class="section-title">Bio</h2>
+            <textarea
+              id="bio"
+              name="bio"
+              disabled
+              placeholder="Tell us about yourself..."
+            ></textarea>
+          </div>
+
+          <div class="profile-section">
+            <h2 class="section-title">Skills</h2>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              disabled
+              placeholder="Your skills (comma separated)"
+            />
+          </div>
+
+          <div class="profile-section">
+            <h2 class="section-title">Interests</h2>
+            <input
+              type="text"
+              id="interests"
+              name="interests"
+              disabled
+              placeholder="Your interests (comma separated)"
+            />
+          </div>
+        </form>
+      </div>
+      <script src="/components/footer/footer.js"></script>
+    </div>
+    <script type="module" src="./profile.js"></script>
+  </body>
+</html>

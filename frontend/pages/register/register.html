@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <script src="../../components/header/header.js"></script>
+      <main>
+        <h2>Register</h2>
+        <form id="registerForm">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            required
+          /><br />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          /><br />
+          <input type="email" name="email" placeholder="Email" required /><br />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          /><br />
+          <button type="submit">Register</button>
+        </form>
+      </main>
+      <script src="/components/footer/footer.js"></script>
+    </div>
+    <script type="module" src="./register.js"></script>
+  </body>
+</html>

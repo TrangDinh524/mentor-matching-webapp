@@ -1,0 +1,74 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentorship Platform</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <script src="components/header/header.js"></script>
+
+    <!-- Your main content here -->
+    <div class="hero">
+      <h1>Welcome to the Mentorship Matching Platform</h1>
+      <p class="subheading">
+        We connect mentors and mentees across tech, business, and creative
+        fields.
+      </p>
+      <div class="content-container">
+        <section class="left-content">
+          <h2>Stay Connected</h2>
+          <p>Drop your email to receive:</p>
+          <ul>
+            <li>
+              💡 <strong>Expert Advice</strong> tailored to your career or
+              learning goals
+            </li>
+            <li>
+              🤝 <strong>1-on-1 Mentorship Matching</strong> based on your
+              interests and skills
+            </li>
+            <li>
+              🎓 <strong>Workshops & Webinars</strong> from industry mentors and
+              alumni
+            </li>
+            <li>
+              🧭 <strong>Career Consulting</strong> to guide your next steps
+            </li>
+            <li>
+              🌱 <strong>Community Support</strong> and networking with
+              like-minded peers
+            </li>
+          </ul>
+        </section>
+        <section class="right-content">
+          <form id="newsletterForm">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Keep Me Posted</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("newsletterForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = this.email.value.trim();
+          alert("Thanks! We'll send updates to " + email);
+          this.reset();
+        });
+    </script>
+    <!-- Include the header and footer injection script at the end of body -->
+    <script src="components/footer/footer.js"></script>
+  </body>
+</html>
