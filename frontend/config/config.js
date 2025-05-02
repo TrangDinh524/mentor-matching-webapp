@@ -1,6 +1,3 @@
 export const config = {
-  API_URL:
-    process.env.NODE_ENV === "production"
-      ? process.env.BACKEND_PROD_URL
-      : "http://localhost:3000",
+  API_URL: "https://mentor-matching-web-app-backend.vercel.app/",
 };
