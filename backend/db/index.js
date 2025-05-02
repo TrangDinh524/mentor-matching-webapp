@@ -18,7 +18,7 @@ if (process.env.DB_SSL_CA) {
     sslConfig = { rejectUnauthorized: true };
   }
 } else {
-  console.warn("!!! DB_SSL_CA environment variable not set. TiDB Cloud requires TLS/SSL with CA verification. Connection might fail.");
+  console.warn("!!! DB_SSL_CA environment variable not set. Connection might fail.");
   sslConfig = { rejectUnauthorized: true };
 }
 
@@ -40,26 +40,19 @@ const pool = mysql.createPool({
 });
 
 // Test the connection
-pool.getConnection((err, connection) => {
-  if (err) {
-    // Log detailed error information
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log("MySQL connection successful!");
+    connection.release();
+    console.log("Connection released back to pool.");
+  } catch (err) {
     console.error("MySQL connection failed!");
     console.error(`Error Code: ${err.code}`);
     console.error(`Error Errno: ${err.errno}`);
     console.error(`Error SQL State: ${err.sqlState}`);
     console.error(`Error Message: ${err.message}`);
-    return;
   }
-
-  if (connection) {
-    console.log("MySQL connection successful!");
-    connection.release();
-    console.log("Connection released back to pool.");
-  } else {
-    console.warn(
-      "pool.getConnection callback executed without error, but the connection object was unexpectedly null."
-    );
-  }
-});
+})();
 
 module.exports = pool;
