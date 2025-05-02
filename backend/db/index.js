@@ -22,6 +22,10 @@ if (process.env.DB_SSL_CA) {
   sslConfig = { rejectUnauthorized: true };
 }
 
+console.log(
+  `Creating database pool for host: ${process.env.DB_HOST}, port: ${process.env.DB_PORT || 4000}, user: ${process.env.DB_USER}, database: ${process.env.DB_NAME}`
+);
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT || 4000,
@@ -31,21 +35,31 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+  connectTimeout: 15000, // 15 seconds
   ssl: sslConfig,
 });
 
 // Test the connection
-async function testConnection() {
-  try {
-    const connection = await pool.getConnection();
-    await connection.ping();
+pool.getConnection((err, connection) => {
+  if (err) {
+    // Log detailed error information
+    console.error("MySQL connection failed!");
+    console.error(`Error Code: ${err.code}`);
+    console.error(`Error Errno: ${err.errno}`);
+    console.error(`Error SQL State: ${err.sqlState}`);
+    console.error(`Error Message: ${err.message}`);
+    return;
+  }
+
+  if (connection) {
     console.log("MySQL connection successful!");
     connection.release();
-  } catch (err) {
-    console.error("MySQL connection failed:", err.message);
+    console.log("Connection released back to pool.");
+  } else {
+    console.warn(
+      "pool.getConnection callback executed without error, but the connection object was unexpectedly null."
+    );
   }
-}
-
-testConnection();
+});
 
 module.exports = pool;
