@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Users</title>
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link rel="stylesheet" href="./browse.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <script src="/components/header/header.js"></script>
+
+    <div class="container">
+      <div class="browse-container">
+        <!-- Filters Section -->
+        <div class="filters-section">
+          <div class="filter-group">
+            <h3>Filters</h3>
+            <div class="filter-item">
+              <label for="role-filter">Role</label>
+              <select id="role-filter" class="filter-select">
+                <option value="">All Roles</option>
+                <option value="mentor">Mentor</option>
+                <option value="mentee">Mentee</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="skills-filter">Skills</label>
+              <input
+                type="text"
+                id="skills-filter"
+                class="filter-input"
+                placeholder="Search by skills..."
+              />
+            </div>
+            <div class="filter-item">
+              <label for="interests-filter">Interests</label>
+              <input
+                type="text"
+                id="interests-filter"
+                class="filter-input"
+                placeholder="Search by interests..."
+              />
+            </div>
+            <button id="apply-filters" class="btn-primary">
+              Apply Filters
+            </button>
+            <button id="clear-filters" class="btn-secondary">
+              Clear Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- Users Grid -->
+        <div class="users-grid" id="users-grid">
+          <!-- User cards will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="/components/footer/footer.js"></script>
+
+    <!-- User Card Template -->
+    <template id="user-card-template">
+      <div class="user-card">
+        <div class="user-avatar">
+          <img src="" alt="User Avatar" class="avatar-img" />
+        </div>
+        <div class="user-info">
+          <h3 class="user-name"></h3>
+          <p class="role-badge"></p>
+          <div class="user-skills">
+            <h4>Skills</h4>
+            <div class="skills-list"></div>
+          </div>
+          <div class="user-interests">
+            <h4>Interests</h4>
+            <div class="interests-list"></div>
+          </div>
+          <button class="btn-primary connection-btn">Connect</button>
+        </div>
+      </div>
+    </template>
+
+    <script type="module" src="./browse.js"></script>
+  </body>
+</html>
